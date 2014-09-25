@@ -385,9 +385,9 @@ bool pseudo_mount_export(struct gsh_export *export)
 	/* Now we need to process the rest of the path, creating directories
 	 * if necessary.
 	 */
-	for (tok = strtok_r(rest, "/", &saveptr);
-	     tok;
-	     tok = strtok_r(NULL, "/", &saveptr)) {
+	saveptr = NULL;
+	tok = strtok_r(rest, "/", &saveptr);
+	for (; tok; tok = strtok_r(NULL, "/", &saveptr)) {
 		rc = make_pseudofs_node(tok, &state);
 		if (!rc) {
 			/* Release reference on mount point inode
