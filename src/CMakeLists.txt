@@ -38,6 +38,7 @@ set(VERSION_COMMENT
 
 # find out which platform we are building on
 if(${CMAKE_SYSTEM_NAME} MATCHES "Linux")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-strict-aliasing")
   set(LINUX ON)
   set(UNIX ON)
   # Now detects the Linux's distro
